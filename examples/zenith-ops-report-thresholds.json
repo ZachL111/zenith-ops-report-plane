@@ -1,0 +1,17 @@
+{
+  "repo": "zenith-ops-report-plane",
+  "thresholds": {
+    "signal": 4,
+    "slack": 1,
+    "confidence": 1,
+    "drag": 2,
+    "ship": 173,
+    "watch": 115
+  },
+  "terms": [
+    "dry-run spread",
+    "rename risk",
+    "operator cost",
+    "idempotence"
+  ]
+}
