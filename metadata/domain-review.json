@@ -1,0 +1,73 @@
+{
+  "repo": "zenith-ops-report-plane",
+  "language": "JavaScript",
+  "category": "Automation",
+  "goal": "Develop a JavaScript command-oriented project for report scenarios with layout fixtures, stable geometry snapshots, and bounded memory input sets.",
+  "review_model": {
+    "terms": [
+      "dry-run spread",
+      "rename risk",
+      "operator cost",
+      "idempotence"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "dry-run spread",
+      "signal": 79,
+      "slack": 27,
+      "drag": 31,
+      "confidence": 64,
+      "score": 156,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "rename risk",
+      "signal": 47,
+      "slack": 44,
+      "drag": 21,
+      "confidence": 62,
+      "score": 137,
+      "lane": "watch"
+    },
+    {
+      "name": "edge",
+      "focus": "operator cost",
+      "signal": 82,
+      "slack": 52,
+      "drag": 12,
+      "confidence": 49,
+      "score": 229,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "idempotence",
+      "signal": 53,
+      "slack": 22,
+      "drag": 30,
+      "confidence": 71,
+      "score": 109,
+      "lane": "watch"
+    },
+    {
+      "name": "stale",
+      "focus": "dry-run spread",
+      "signal": 83,
+      "slack": 24,
+      "drag": 22,
+      "confidence": 89,
+      "score": 213,
+      "lane": "ship"
+    }
+  ]
+}

@@ -1,69 +1,40 @@
 # zenith-ops-report-plane
 
-`zenith-ops-report-plane` is a JavaScript project for Automation. It turns develop a JavaScript command-oriented project for report scenarios with layout fixtures, stable geometry snapshots, and bounded memory input sets into a small local model with readable fixtures and a direct verification command.
-
-## Reading Zenith Ops Report Plane
-
-Start with the README, then open `metadata/project.json` to check the constants behind the examples. After that, `fixtures/cases.csv` shows the compact path and `examples/extended_cases.csv` gives a wider look at the same rule.
+`zenith-ops-report-plane` is a compact JavaScript repository for automation, centered on this goal: Develop a JavaScript command-oriented project for report scenarios with layout fixtures, stable geometry snapshots, and bounded memory input sets.
 
 ## Purpose
 
-I use this kind of project to make a rule visible before adding more machinery around it. The important part here is not the size of the codebase. It is that the input signals, scoring rule, fixture data, and expected output can all be checked in one sitting.
+This is intentionally local and self-contained so it can be inspected without credentials, services, or seeded history.
 
-## Fixture Notes
+## Zenith Ops Report Plane Review Notes
 
-`examples/extended_cases.csv` adds six named cases. I kept the names plain so failures are easy to read in a terminal: baseline, pressure, surge, degraded, recovery, and boundary.
+Start with `operator cost` and `idempotence`. Those cases create the widest score spread in this repo, so they are the best quick check when the model changes.
 
-## Design Sketch
+## What Is Covered
 
-The project is organized around a compact model rather than a large framework. Inputs are scored, classified, and checked against golden fixtures. The constants live in code and are mirrored in metadata so documentation drift is easy to catch. The JavaScript version uses native modules and a small Node test path.
+- `fixtures/domain_review.csv` adds cases for dry-run spread and rename risk.
+- `metadata/domain-review.json` records the same cases in structured form.
+- `config/review-profile.json` captures the read order and the two review questions.
+- `examples/zenith-ops-report-walkthrough.md` walks through the case spread.
+- The JavaScript code includes a review path for `operator cost` and `idempotence`.
+- `docs/field-notes.md` explains the strongest and weakest cases.
 
-## What It Does
+## Implementation Notes
 
-- Models dry-run output with deterministic scoring and explicit review decisions.
-- Uses fixture data to keep file plans changes visible in code review.
-- Includes extended examples for safety rails, including `surge` and `degraded`.
-- Documents idempotent checks tradeoffs in `docs/operations.md`.
-- Runs locally with a single verification command and no external credentials.
+The implementation keeps the scoring rule plain: reward signal and confidence, preserve slack, penalize drag, then classify the result into a review lane.
 
-## Usage
+The JavaScript addition stays small enough to inspect in one sitting.
+
+## Command
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
 ```
 
-This runs the language-level build or test path against the compact fixture set.
+## Audit Path
 
-## Verification
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/audit.ps1
-```
-
-The audit command checks repository structure and README constraints before it delegates to the verifier.
-
-## Files Worth Reading
-
-- `src`: primary implementation
-- `tests`: verification harness
-- `fixtures`: compact golden scenarios
-- `examples`: expanded scenario set
-- `metadata`: project constants and verification metadata
-- `docs`: operations and extension notes
-- `scripts`: local verification and audit commands
-- `package.json`: Node package scripts
-
-## Next Directions
-
-- Add a short report command that prints the score breakdown for a single scenario.
-- Add malformed input fixtures so the failure path is as visible as the happy path.
-- Split the scoring constants into a typed configuration object and validate it before use.
-- Add one more automation fixture that focuses on a malformed or borderline input.
+That command is also the regression path. It verifies the domain cases and catches mismatches between the CSV, metadata, and code.
 
 ## Limits
 
-The examples cover useful edges, not every edge. A larger version would add malformed-input tests, richer reports, and deeper domain parsers.
-
-## Setup
-
-Clone the repository, enter the directory, and run the verifier. No database server, cloud account, or token is required.
+This remains a local project with deterministic fixtures. It does not depend on credentials, hosted services, or live data. Future work should add richer malformed inputs before widening the public API.
